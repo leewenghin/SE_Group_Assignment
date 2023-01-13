@@ -1,0 +1,97 @@
+/* login page */
+h1,h2,h3,h4,h5{
+    font-family: 'Bebas Neue', cursive;
+}
+
+.standard_content{
+    font-family: 'Rubik', sans-serif;
+}
+
+.login_page_bng{
+    background-color: #FAEAB1;
+}
+
+/* Side Navigation */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #FECD70;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #272829;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 576px) {
+    #main:has(#adminDepartTable),
+    #main:has(#userProfileTable){
+        padding: 0 !important;
+    }
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+/* table line border */
+.table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+    border: 1px solid #b8ae9c;
+}
+
+/* notification */
+.btn-info-user-list{
+    background-color: #FFAE6D;
+    color: #37452c
+}
+
+i{
+    font-size: 30px;
+}
+
+i.view_icon{
+    color: #3c557d;
+}
+
+i.edit_icon{
+    color: #457570;
+}
+
+i.accept_decline_icon
+{
+    color: #6698e3;
+}
+
+i.assign_icon{
+    color: #6e3e9e;
+}
