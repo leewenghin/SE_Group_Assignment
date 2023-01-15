@@ -27,6 +27,7 @@ class VerifiedComplaintController extends Controller
         $vc_done_number = 0;
         $vc_reprocessing_number = 0;
         $vc_closed_number = 0;
+        $total = 0;
         if (Auth::user()->department_id != null) {
             $verified_complaints = VerifiedComplaint::where('assigned_to_department_id', Auth::user()->department_id)->get();
             $vc_kiv_number = $verified_complaints->where('status_id', 2)
@@ -39,6 +40,7 @@ class VerifiedComplaintController extends Controller
                                     ->count();
             $vc_closed_number = $verified_complaints->where('status_id', 6)
                                     ->count();
+            $total = $verified_complaints->count();
         }
         $verified_complaint_status = [
             ["name" => "Keep in view", "number" => $vc_kiv_number],
@@ -49,7 +51,8 @@ class VerifiedComplaintController extends Controller
         ];
 
         return view('executive.executive_dashboard')
-            ->with('status_verified_complaint', $verified_complaint_status);
+            ->with('status_verified_complaint', $verified_complaint_status)
+            ->with('total', $total);
     }
 
     public function index(Request $request)
@@ -136,9 +139,6 @@ class VerifiedComplaintController extends Controller
                     'status_id' => $status_id,
                     'complaint_action_id' => $complaint_action,
                 ]);
-                $vc->status_id = $status_id;
-                $vc->complaint_action_id = $complaint_action;
-                $vc->save();
             }
             else {
                 $complaint_logging = ComplaintLogging::create([
@@ -169,11 +169,13 @@ class VerifiedComplaintController extends Controller
 
                     $processing_document->save();
                 }
-
-                $vc->status_id = $status_id;
-                $vc->complaint_action_id = $complaint_action;
-                $vc->save();
             }
+            $vc->status_id = $status_id;
+            $vc->complaint_action_id = $complaint_action;
+            $vc->save();
+            $vc->complaints()->update([
+                'status_id' => $status_id,
+            ]);
         }
         else if ($vc->complaint_action_id == 3) {
             $request->validate([
@@ -222,6 +224,9 @@ class VerifiedComplaintController extends Controller
             $vc->status_id = $status_id;
             $vc->complaint_action_id = $complaint_action;
             $vc->save();
+            $vc->complaints()->update([
+                'status_id' => $status_id,
+            ]);
         }
 
         return redirect()->route('executive.verified_complaints.show', ['verified_complaint' => $vc->id]);
