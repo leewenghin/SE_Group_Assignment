@@ -30,7 +30,7 @@
             <a class="btn btn-primary btn-lg" href="{{ route('complaints.create') }}">New</a>
         </div>
         @include('components.action_message')
-        <table id="studentComplaintTable" class="table table-bordered table-striped">
+        <table id="studentComplaintTable" class="table table-bordered table-striped table table-hover">
             <thead class="table-dark">
                 <tr>
                     <th scope="col" class="d-none d-sm-table-cell">No</th>
