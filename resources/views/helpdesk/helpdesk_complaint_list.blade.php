@@ -30,7 +30,7 @@
         <input type="hidden" id="add_complaint_to_existing" name="url" value="{{ route('helpdesk.verified_complaints.add_complaint') }}"/>
         <form id="form" action="{{ route('helpdesk.verified_complaints.create') }}" method="POST">
             @csrf
-            <table id="execuativeComplaintTable" class="table table-bordered table-striped">
+            <table id="execuativeComplaintTable" class="table table-bordered table-striped table table-hover">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="d-none d-sm-table-cell">No</th>
