@@ -38,7 +38,7 @@
                     <h4 class="m-auto">{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h4>
                     <div class="d-flex justify-content-between">
                         <div class="m-auto me-2">
-                            <img src="{{ asset(Auth::user()->GetAvatar()) }}" alt="" width="30px" height="30px" class="rounded-circle">
+                            <img src="{{ asset(Auth::user()->GetAvatar()) }}" alt="" width="40px" height="40px" class="rounded-circle">
                         </div>
                         <form action="{{ route('logout') }}" method="POST" class="">
                             @csrf
@@ -54,14 +54,14 @@
             <a href="{{ route('home') }}" class="text-decoration-none"><h2 class="text-black text-center">e-Complaint</h2></a>
 
             <div class="d-flex justify-content-center my-3">
-                <img src="{{ asset(Auth::user()->GetAvatar()) }}" alt="profile.png" height="350px">
+                <img class="image_rounded" src="{{ asset(Auth::user()->GetAvatar()) }}" alt="profile.png" height="150px">
             </div>
 
             <div class="text-center">
                 <h4>Name: {{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h4>
 
                 @if (Auth::user()->HasRole())
-                    <div class="list-group">
+                <div class="list-group hover_chg_text_clr">
                         @if (Auth::user()->IsHelpDesk())
                             <a data-bs-toggle="collapse" href="#collapseHelpdesk" role="button" aria-expanded="false" aria-controls="collapseHelpdesk" class="list-group-item list-group-item-action h5 @if(Request::is('help-desk/*')) active @endif">Help Desk</a>
                             <div id="collapseHelpdesk" class="collapse">
