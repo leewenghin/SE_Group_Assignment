@@ -26,7 +26,7 @@ h1,h2,h3,h4,h5{
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 8px 8px 8px 0px;
   text-decoration: none;
   font-size: 25px;
   color: #272829;
@@ -94,4 +94,8 @@ i.accept_decline_icon
 
 i.assign_icon{
     color: #6e3e9e;
+}
+
+.image_rounded{
+  border-radius: 100%;
 }
